@@ -10,10 +10,8 @@ class Cookie < Plugin
   end
   def go(source, _command, args, bot)
     result = nil
-    error = 'GELP'
-    Open3.popen3('curl', '--silent', 'http://coo.kie.space/a') do |_stdin, stdout, stderr|
+      Open3.popen3('curl', '--silent', 'http://coo.kie.space/a') do |_stdin, stdout, stderr|
       result = stdout.read.chomp
-      error = stderr.read.chomp
       bot.say(self, source, result)
     end
 end
